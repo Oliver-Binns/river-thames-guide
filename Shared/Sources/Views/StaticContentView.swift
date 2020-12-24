@@ -7,9 +7,9 @@
 import SwiftUI
 
 public struct StaticContentView: View {
-    private let updates: [LineStatusUpdate]
+    private let updates: LocationConditions
 
-    public init(updates: [LineStatusUpdate]) {
+    public init(updates: LocationConditions) {
         self.updates = updates
     }
 
@@ -21,9 +21,8 @@ public struct StaticContentView: View {
         }
     }
 }
-
 struct FixedHeightContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(updates: [])
+        ContentView(updates: .placeholder)
     }
 }

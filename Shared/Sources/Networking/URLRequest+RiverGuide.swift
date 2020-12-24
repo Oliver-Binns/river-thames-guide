@@ -8,14 +8,10 @@
 import Foundation
 
 extension URLRequest {
-    private static var baseURL: String { "https://api.tfl.gov.uk/" }
+    private static var baseURL: String { "https://www.riverthamesguide.net/eaparse/" }
 
-    public static var lineStatus: URLRequest {
-        .init(endpoint: "line", "mode", "tube", "status")
-    }
-
-    public static func statusForLine(_ line: Line) -> URLRequest {
-        .init(endpoint: "line", line.id, "status")
+    public static func statusForLocation(_ location: Location) -> URLRequest {
+        .init(endpoint: "\(location.rawValue).php")
     }
 
     init(endpoint: String...) {

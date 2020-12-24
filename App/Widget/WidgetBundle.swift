@@ -13,6 +13,5 @@ struct TubeWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         AllLinesWidget()
-        SingleLineWidget()
     }
 }

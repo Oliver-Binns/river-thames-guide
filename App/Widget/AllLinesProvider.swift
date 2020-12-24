@@ -12,22 +12,20 @@ import SwiftUI
 
 struct AllLinesProvider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), line: nil, updates: Line.allCases.map { line in
-            LineStatusUpdate(line: line)
-        })
+        SimpleEntry(date: Date(), conditions: .placeholder)
     }
 
     public func getSnapshot(in context: Context,
                             completion: @escaping (SimpleEntry) -> ()) {
-        StatusService.getStatus(client: NetworkClient()) { updates in
+        StatusService.getStatus(client: NetworkClient(), for: .marsh) { updates in
             completion(placeholder(in: context))
         }
     }
 
     public func getTimeline(in context: Context,
                             completion: @escaping (Timeline<Entry>) -> ()) {
-        StatusService.getStatus(client: NetworkClient()) { updates in
-            let entry = SimpleEntry(date: Date(), line: nil, updates: updates)
+        StatusService.getStatus(client: NetworkClient(), for: .marsh) { updates in
+            let entry = SimpleEntry(date: Date(), conditions: updates)
             // Refresh the data every two minutes:
             let expiryDate = Calendar.current.date(byAdding: .minute, value: 2, to: Date()) ?? Date()
             let timeline = Timeline(entries: [entry], policy: .after(expiryDate))
@@ -38,14 +36,13 @@ struct AllLinesProvider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let line: Line?
-    let updates: [LineStatusUpdate]
+    let conditions: LocationConditions
 }
 struct AllLinesWidget: Widget {
     public var body: some WidgetConfiguration {
         StaticConfiguration(kind: "All Lines",
                             provider: AllLinesProvider()) { entry in
-            StaticContentView(updates: entry.updates)
+            StaticContentView(updates: entry.conditions)
         }
         .configurationDisplayName("Tube Status")
         .description("See the status board for all London Underground lines")

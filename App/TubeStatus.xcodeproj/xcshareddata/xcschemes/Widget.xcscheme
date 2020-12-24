@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1200"
+   LastUpgradeVersion = "1220"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C18741024A3A858009CCECC"
-               BuildableName = "iOS-Widget.appex"
-               BlueprintName = "iOS-Widget"
+               BuildableName = "River Widget.appex"
+               BlueprintName = "River Widget"
                ReferencedContainer = "container:TubeStatus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
-               BuildableName = "iOS.app"
-               BlueprintName = "iOS"
+               BuildableName = "River Widgets.app"
+               BlueprintName = "River Widgets"
                ReferencedContainer = "container:TubeStatus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -73,8 +73,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C18741024A3A858009CCECC"
-            BuildableName = "iOS-Widget.appex"
-            BlueprintName = "iOS-Widget"
+            BuildableName = "River Widget.appex"
+            BlueprintName = "River Widget"
             ReferencedContainer = "container:TubeStatus.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -82,8 +82,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
-            BuildableName = "iOS.app"
-            BlueprintName = "iOS"
+            BuildableName = "River Widgets.app"
+            BlueprintName = "River Widgets"
             ReferencedContainer = "container:TubeStatus.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -117,8 +117,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
-            BuildableName = "iOS.app"
-            BlueprintName = "iOS"
+            BuildableName = "River Widgets.app"
+            BlueprintName = "River Widgets"
             ReferencedContainer = "container:TubeStatus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

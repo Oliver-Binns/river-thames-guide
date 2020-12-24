@@ -8,12 +8,12 @@ import Combine
 import Foundation
 
 public final class StatusViewModel: ObservableObject {
-    @Published public var status: [LineStatusUpdate] = []
+    @Published public var conditions: LocationConditions = .placeholder
 
     public init(client: NetworkClient) {
-        StatusService.getStatus(client: client) { [weak self] status in
+        StatusService.getStatus(client: client, for: .marsh) { [weak self] conditions in
             DispatchQueue.main.async {
-                self?.status = status
+                self?.conditions = conditions
             }
         }
     }
