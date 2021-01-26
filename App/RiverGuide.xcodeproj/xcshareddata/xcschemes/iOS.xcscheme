@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07A7414424B45AA8002089FD"
-               BuildableName = "Shared.framework"
-               BlueprintName = "watchOS"
-               ReferencedContainer = "container:Shared.xcodeproj">
+               BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
+               BuildableName = "River Widgets.app"
+               BlueprintName = "River Widgets"
+               ReferencedContainer = "container:RiverGuide.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C1873AA24A3A462009CCECC"
+               BuildableName = "TubeStatusUITests.xctest"
+               BlueprintName = "TubeStatusUITests"
+               ReferencedContainer = "container:RiverGuide.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -40,6 +50,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
+            BuildableName = "River Widgets.app"
+            BlueprintName = "River Widgets"
+            ReferencedContainer = "container:RiverGuide.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +67,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "07A7414424B45AA8002089FD"
-            BuildableName = "Shared.framework"
-            BlueprintName = "watchOS"
-            ReferencedContainer = "container:Shared.xcodeproj">
+            BlueprintIdentifier = "7C18738E24A3A45E009CCECC"
+            BuildableName = "River Widgets.app"
+            BlueprintName = "River Widgets"
+            ReferencedContainer = "container:RiverGuide.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

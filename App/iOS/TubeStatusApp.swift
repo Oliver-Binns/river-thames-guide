@@ -14,7 +14,7 @@ struct TubeStatusApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ScrollableContentView(updates: viewModel.conditions)
+            ContentView(htmlData: viewModel.htmlData)
         }
     }
 }
