@@ -12,23 +12,26 @@ import SwiftUI
 import WebKit
 import UIKit
 
-final class AllLinesProvider: TimelineProvider {
+final class LockProvider: IntentTimelineProvider {
+    typealias Intent = LockSelectionIntent
     var imageWebView: ImageWebView?
 
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), image: UIImage(systemName: "circle")!)
     }
 
-    public func getSnapshot(in context: Context,
+    public func getSnapshot(for configuration: LockSelectionIntent,
+                            in context: Context,
                             completion: @escaping (SimpleEntry) -> ()) {
         StatusService.getStatus(client: NetworkClient(), for: .marsh) { updates in
             completion(self.placeholder(in: context))
         }
     }
 
-    public func getTimeline(in context: Context,
+    public func getTimeline(for configuration: LockSelectionIntent,
+                            in context: Context,
                             completion: @escaping (Timeline<Entry>) -> ()) {
-        StatusService.getStatus(client: NetworkClient(), for: .marsh) { htmlData in
+        StatusService.getStatus(client: NetworkClient(), for: configuration.location) { htmlData in
             DispatchQueue.main.async {
                 self.imageWebView = ImageWebView(data: htmlData) { image in
                     let entry = SimpleEntry(date: Date(), image: image)
@@ -73,13 +76,32 @@ struct SimpleEntry: TimelineEntry {
 }
 struct AllLinesWidget: Widget {
     public var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "All Lines",
-                            provider: AllLinesProvider()) { entry in
-            Image(uiImage: entry.image)
-            //ContentView(htmlData: entry.htmlData)
+        IntentConfiguration(kind: "Lock",
+                            intent: LockSelectionIntent.self,
+                            provider: LockProvider()) { entry in
+            GeometryReader { metrics in
+                Image(uiImage: entry.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: metrics.size.width, height: metrics.size.height)
+            }
         }
         .configurationDisplayName("River Widget")
         .description("See the status board for all London Underground lines")
         .supportedFamilies([.systemMedium])
+    }
+}
+extension LockSelectionIntent {
+    var location: Location {
+        switch self.lock {
+        case .buscot:
+            return .buscot
+        case .marsh:
+            return .marsh
+        case .rushey:
+            return .rushey
+        default:
+            return .shiplake
+        }
     }
 }

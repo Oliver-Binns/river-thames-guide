@@ -24,7 +24,7 @@
 	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>LineSelectionIntent</string>
+		<string>LockSelectionIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -7,4 +7,6 @@
 public enum Location: String {
     case marsh
     case shiplake
+    case buscot
+    case rushey
 }

@@ -11,13 +11,13 @@
 		076BC47024B461FB0006AADB /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076BC46F24B461FB0006AADB /* Shared.framework */; };
 		076BC47124B461FB0006AADB /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076BC46F24B461FB0006AADB /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076BC47324B462030006AADB /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076BC47224B462030006AADB /* Shared.framework */; };
-		7C09CAA024A51301000D9431 /* LineSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7C09CA9F24A51301000D9431 /* LineSelection.intentdefinition */; };
-		7C09CAB624A524D4000D9431 /* LineSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7C09CA9F24A51301000D9431 /* LineSelection.intentdefinition */; };
+		7C09CAA024A51301000D9431 /* LockSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7C09CA9F24A51301000D9431 /* LockSelection.intentdefinition */; };
+		7C09CAB624A524D4000D9431 /* LockSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7C09CA9F24A51301000D9431 /* LockSelection.intentdefinition */; };
 		7C18739324A3A45E009CCECC /* TubeStatusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18739224A3A45E009CCECC /* TubeStatusApp.swift */; };
 		7C18739724A3A462009CCECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C18739624A3A462009CCECC /* Assets.xcassets */; };
 		7C18741224A3A858009CCECC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1873D424A3A52E009CCECC /* WidgetKit.framework */; };
 		7C18741324A3A858009CCECC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1873D624A3A52E009CCECC /* SwiftUI.framework */; };
-		7C18741624A3A858009CCECC /* AllLinesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18741524A3A858009CCECC /* AllLinesProvider.swift */; };
+		7C18741624A3A858009CCECC /* LockProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18741524A3A858009CCECC /* LockProvider.swift */; };
 		7C18741824A3A85A009CCECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C18741724A3A85A009CCECC /* Assets.xcassets */; };
 		7C18741C24A3A85A009CCECC /* River Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7C18741124A3A858009CCECC /* River Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7CA560E424A4E5BC00A0399E /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA560E324A4E5BC00A0399E /* WidgetBundle.swift */; };
@@ -92,7 +92,7 @@
 		07BA5C5E24B8C6AA00193157 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		07BA5C6224B8C6C900193157 /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BA5C6724B8CAAF00193157 /* iOS-Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-Widget.entitlements"; sourceTree = "<group>"; };
-		7C09CA9F24A51301000D9431 /* LineSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LineSelection.intentdefinition; sourceTree = "<group>"; };
+		7C09CA9F24A51301000D9431 /* LockSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = LockSelection.intentdefinition; sourceTree = "<group>"; };
 		7C09CAA624A518AA000D9431 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		7C18738F24A3A45E009CCECC /* River Widgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "River Widgets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C18739224A3A45E009CCECC /* TubeStatusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TubeStatusApp.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		7C1873D424A3A52E009CCECC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7C1873D624A3A52E009CCECC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		7C18741124A3A858009CCECC /* River Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "River Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C18741524A3A858009CCECC /* AllLinesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLinesProvider.swift; sourceTree = "<group>"; };
+		7C18741524A3A858009CCECC /* LockProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockProvider.swift; sourceTree = "<group>"; };
 		7C18741724A3A85A009CCECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C18741924A3A85A009CCECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA560E324A4E5BC00A0399E /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				7CA560E324A4E5BC00A0399E /* WidgetBundle.swift */,
-				7C18741524A3A858009CCECC /* AllLinesProvider.swift */,
-				7C09CA9F24A51301000D9431 /* LineSelection.intentdefinition */,
+				7C18741524A3A858009CCECC /* LockProvider.swift */,
+				7C09CA9F24A51301000D9431 /* LockSelection.intentdefinition */,
 				7C18741724A3A85A009CCECC /* Assets.xcassets */,
 				7C18741924A3A85A009CCECC /* Info.plist */,
 			);
@@ -337,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C09CAB624A524D4000D9431 /* LineSelection.intentdefinition in Sources */,
+				7C09CAB624A524D4000D9431 /* LockSelection.intentdefinition in Sources */,
 				7C18739324A3A45E009CCECC /* TubeStatusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,8 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA560E424A4E5BC00A0399E /* WidgetBundle.swift in Sources */,
-				7C09CAA024A51301000D9431 /* LineSelection.intentdefinition in Sources */,
-				7C18741624A3A858009CCECC /* AllLinesProvider.swift in Sources */,
+				7C09CAA024A51301000D9431 /* LockSelection.intentdefinition in Sources */,
+				7C18741624A3A858009CCECC /* LockProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
