@@ -86,8 +86,90 @@ extension LockSelectionIntent {
             return .marsh
         case .rushey:
             return .rushey
-        default:
+        case .shiplake:
             return .shiplake
+        case .eynsham:
+            return .eynsham
+        case .godstow:
+            return .godstow
+        case .grafton:
+            return .grafton
+        case .kings:
+            return .kings
+        case .northmoor:
+            return .northmoor
+        case .pinkhill:
+            return .pinkhill
+        case .radcot:
+            return .radcot
+        case .shifford:
+            return .shifford
+        case .stJohns:
+            return .stJohns
+        case .osney:
+            return .osney
+        case .iffley:
+            return .iffley
+        case .sandford:
+            return .sandford
+        case .abingdon:
+            return .abingdon
+        case .culham:
+            return .culham
+        case .clifton:
+            return .clifton
+        case .days:
+            return .days
+        case .benson:
+            return .benson
+        case .cleeve:
+            return .cleeve
+        case .goring:
+            return .goring
+        case .whitchurch:
+            return .whitchurch
+        case .mapledurham:
+            return .mapledurham
+        case .caversham:
+            return .caversham
+        case .sonning:
+            return .sonning
+        case .hambleden:
+            return .hambleden
+        case .hurley:
+            return .hurley
+        case .temple:
+            return .temple
+        case .marlow:
+            return .marlow
+        case .cookham:
+            return .cookham
+        case .boulters:
+            return .boulters
+        case .bray:
+            return .bray
+        case .boveney:
+            return .boveney
+        case .romney:
+            return .romney
+        case .oldWindsor:
+            return .oldWindsor
+        case .bellWeir:
+            return .bellWeir
+        case .pentonHook:
+            return .pentonHook
+        case .chertsey:
+            return .chertsey
+        case .shepperton:
+            return .shepperton
+        case .sunbury:
+            return .sunbury
+        case .molesey:
+            return .molesey
+        case .teddington:
+            return .teddington
+        case .unknown:
+            return .buscot
         }
     }
 }

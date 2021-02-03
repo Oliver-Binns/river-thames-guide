@@ -35,7 +35,7 @@ extension Stretch: Decodable {
         case name = "stretch"
         case condition
         case colourString = "colour"
-        case lastUpdated = "lasdtupdated"
+        case lastUpdated = "lastupdated"
     }
 }
 extension Stretch: Identifiable {

@@ -9,6 +9,12 @@ import SwiftUI
 public struct StretchView: View {
     let stretch: Stretch
 
+    private var formatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm dd MMM"
+        return dateFormatter
+    }
+
     public init(stretch: Stretch) {
         self.stretch = stretch
     }
@@ -16,8 +22,14 @@ public struct StretchView: View {
     public var body: some View {
         VStack {
             Text(stretch.name)
-            Text(stretch.condition)
-                .foregroundColor(stretch.colour)
+                .font(.subheadline)
+            HStack {
+                Text(stretch.condition)
+                    .foregroundColor(stretch.colour)
+                    .font(.caption2)
+                Text("Last Updated: \(formatter.string(from: stretch.lastUpdated))")
+                    .font(.caption2)
+            }
         }
     }
 }
