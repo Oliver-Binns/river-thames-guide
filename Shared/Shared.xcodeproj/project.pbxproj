@@ -13,7 +13,6 @@
 		07A020C425C0112F00D39B78 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A020C325C0112F00D39B78 /* Lock.swift */; };
 		07A7413C24B45A75002089FD /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A7413A24B45A75002089FD /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A7419E24B45E83002089FD /* StretchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7418524B45E83002089FD /* StretchView.swift */; };
-		07A741BE24B45E84002089FD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7418F24B45E83002089FD /* NetworkClient.swift */; };
 		07A741C224B45E84002089FD /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7419024B45E83002089FD /* StatusService.swift */; };
 		07A741C624B45E84002089FD /* URLRequest+RiverGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7419124B45E83002089FD /* URLRequest+RiverGuide.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +26,6 @@
 		07A7413A24B45A75002089FD /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		07A7413B24B45A75002089FD /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		07A7418524B45E83002089FD /* StretchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchView.swift; sourceTree = "<group>"; };
-		07A7418F24B45E83002089FD /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		07A7419024B45E83002089FD /* StatusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusService.swift; sourceTree = "<group>"; };
 		07A7419124B45E83002089FD /* URLRequest+RiverGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+RiverGuide.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +100,6 @@
 		07A7418E24B45E83002089FD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				07A7418F24B45E83002089FD /* NetworkClient.swift */,
 				07A7419024B45E83002089FD /* StatusService.swift */,
 				07A7419124B45E83002089FD /* URLRequest+RiverGuide.swift */,
 			);
@@ -200,7 +197,6 @@
 				07A020C425C0112F00D39B78 /* Lock.swift in Sources */,
 				07A741C624B45E84002089FD /* URLRequest+RiverGuide.swift in Sources */,
 				0797F86725CA7CB50082122B /* Stretch.swift in Sources */,
-				07A741BE24B45E84002089FD /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

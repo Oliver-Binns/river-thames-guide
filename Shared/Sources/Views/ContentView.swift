@@ -7,17 +7,19 @@
 import SwiftUI
 
 public struct ContentView: View {
-    @Binding var result: Result<Stretch, Error>?
+    @Binding var result: Result<[Stretch], Error>?
 
-    public init(result: Binding<Result<Stretch, Error>?>) {
+    public init(result: Binding<Result<[Stretch], Error>?>) {
         self._result = result
     }
 
     public var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             switch result {
-            case .success(let stretch):
-                StretchView(stretch: stretch)
+            case .success(let stretches):
+                ForEach(stretches) {
+                    StretchView(stretch: $0)
+                }
             case .failure(let error):
                 Text(error.localizedDescription)
             default:

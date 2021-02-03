@@ -22,7 +22,6 @@ public struct Stretch {
     }
 
     public let lastUpdated: Date
-    //{"stretch":"Marsh Lock to Hambleden Lock ","condition":"Caution strong stream","colour":"red","lasdtupdated":"11:55 14 Jan"}
 
     public init(name: String, condition: String, lastUpdated: Date) {
         self.name = name
@@ -37,5 +36,10 @@ extension Stretch: Decodable {
         case condition
         case colourString = "colour"
         case lastUpdated = "lasdtupdated"
+    }
+}
+extension Stretch: Identifiable {
+    public var id: String {
+        name
     }
 }

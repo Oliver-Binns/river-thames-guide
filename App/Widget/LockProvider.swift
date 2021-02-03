@@ -4,48 +4,62 @@
 //
 //  Created by Oliver Binns on 24/06/2020.
 //
-
-import Foundation
+import Combine
 import Shared
 import WidgetKit
 import SwiftUI
-import WebKit
-import UIKit
 
 final class LockProvider: IntentTimelineProvider {
     typealias Intent = LockSelectionIntent
 
+    private var cancellables: [AnyCancellable] = []
+
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), result: .success(.init(name: "Test",
+        SimpleEntry(date: Date(), result: .success([.init(name: "Test",
                                                  condition: "Test",
-                                                 lastUpdated: .init())))
+                                                 lastUpdated: .init())]))
     }
 
     public func getSnapshot(for configuration: LockSelectionIntent,
                             in context: Context,
                             completion: @escaping (SimpleEntry) -> ()) {
-        StatusService.getStatus(client: NetworkClient(), for: .marsh) { updates in
+        /*StatusService
+            .getStatuses(for: .marsh)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: {
+                    completion()
+                  })*/
+
+        /* { updates in
             completion(self.placeholder(in: context))
-        }
+        }*/
     }
 
     public func getTimeline(for configuration: LockSelectionIntent,
                             in context: Context,
                             completion: @escaping (Timeline<Entry>) -> ()) {
-        StatusService.getStatus(client: NetworkClient(), for: configuration.location) { result in
-            DispatchQueue.main.async {
-                let expiryDate = Calendar.current.date(byAdding: .second, value: 30, to: Date()) ?? Date()
-                let entry = SimpleEntry(date: Date(), result: result)
-                let timeline = Timeline(entries: [entry], policy: .after(expiryDate))
-                completion(timeline)
-            }
-        }
+        StatusService
+            .getStatuses(for: configuration.location)
+            .sink(receiveCompletion: {
+                if case .failure(let error) = $0 {
+                    completion(self.wrapResult(result: .failure(error)))
+                }
+            }, receiveValue: {
+                completion(self.wrapResult(result: .success($0)))
+            })
+            .store(in: &cancellables)
+    }
+
+    private func wrapResult(result: Result<[Stretch], Error>) -> Timeline<SimpleEntry> {
+        let expiryDate = Calendar.current.date(byAdding: .second, value: 30, to: Date()) ?? Date()
+        let entry = SimpleEntry(date: Date(), result: result)
+        return Timeline(entries: [entry], policy: .after(expiryDate))
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let result: Result<Stretch, Error>
+    let result: Result<[Stretch], Error>
 }
 struct AllLinesWidget: Widget {
     public var body: some WidgetConfiguration {
