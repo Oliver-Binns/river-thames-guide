@@ -5,28 +5,45 @@
 //  Created by Oliver Binns on 24/06/2020.
 //
 import Foundation
-import SwiftSoup
 
 public struct StatusService {
     enum StatusServiceError: Error {
-        case invalidHTMLData
+        case invalidJSONData
+    }
+
+    public static func getStatuses(client: NetworkClient,
+                                   for location: Lock,
+                                   completion: @escaping (Result<[Stretch], Error>) -> Void) {
+        [location.previous, location, location.next]
+            .compactMap { $0 }
     }
 
     public static func getStatus(client: NetworkClient,
-                                 for location: Location,
-                                 completion: ((Data) -> Void)? = nil) {
+                                 for location: Lock,
+                                 completion: @escaping (Result<Stretch, Error>) -> Void) {
         runStatusRequest(.statusForLocation(location), on: client, completion: completion)
     }
 
     private static func runStatusRequest(_ request: URLRequest,
                                          on client: NetworkClient,
-                                         completion: ((Data) -> Void)? = nil) {
+                                         completion: @escaping (Result<Stretch, Error>) -> Void) {
         client.executeRequest(request: request) { result in
             switch result {
             case .success(let data):
-                completion?(data)
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm dd MMM"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+                do {
+                    let stretch = try decoder.decode(Stretch.self, from: data)
+                    completion(.success(stretch))
+                } catch {
+                    completion(.failure(StatusServiceError.invalidJSONData))
+                }
+
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

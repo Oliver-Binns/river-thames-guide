@@ -8,10 +8,10 @@
 import Foundation
 
 extension URLRequest {
-    private static var baseURL: String { "https://www.riverthamesguide.net/eaparse/" }
+    private static var baseURL: String { "https://www.riverthamesguide.net/widgets/" }
 
-    public static func statusForLocation(_ location: Location) -> URLRequest {
-        .init(endpoint: "\(location.rawValue).php")
+    public static func statusForLocation(_ location: Lock) -> URLRequest {
+        .init(endpoint: "\(location.rawValue).json")
     }
 
     init(endpoint: String...) {

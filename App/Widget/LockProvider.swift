@@ -14,10 +14,11 @@ import UIKit
 
 final class LockProvider: IntentTimelineProvider {
     typealias Intent = LockSelectionIntent
-    var imageWebView: ImageWebView?
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), image: UIImage(systemName: "circle")!)
+        SimpleEntry(date: Date(), result: .success(.init(name: "Test",
+                                                 condition: "Test",
+                                                 lastUpdated: .init())))
     }
 
     public func getSnapshot(for configuration: LockSelectionIntent,
@@ -31,48 +32,20 @@ final class LockProvider: IntentTimelineProvider {
     public func getTimeline(for configuration: LockSelectionIntent,
                             in context: Context,
                             completion: @escaping (Timeline<Entry>) -> ()) {
-        StatusService.getStatus(client: NetworkClient(), for: configuration.location) { htmlData in
+        StatusService.getStatus(client: NetworkClient(), for: configuration.location) { result in
             DispatchQueue.main.async {
-                self.imageWebView = ImageWebView(data: htmlData) { image in
-                    let entry = SimpleEntry(date: Date(), image: image)
-                    // Refresh the data every two minutes:
-                    let expiryDate = Calendar.current.date(byAdding: .second, value: 30, to: Date()) ?? Date()
-                    let timeline = Timeline(entries: [entry], policy: .after(expiryDate))
-                    completion(timeline)
-                }
+                let expiryDate = Calendar.current.date(byAdding: .second, value: 30, to: Date()) ?? Date()
+                let entry = SimpleEntry(date: Date(), result: result)
+                let timeline = Timeline(entries: [entry], policy: .after(expiryDate))
+                completion(timeline)
             }
-        }
-    }
-}
-final class ImageWebView: NSObject {
-    private let webView = WKWebView()
-    private var onLoad: ((UIImage) -> Void)? = nil
-
-    convenience init?(data: Data, onLoad: @escaping (UIImage) -> Void) {
-        guard let string = String(data: data, encoding: .utf8) else {
-            return nil
-        }
-        self.init()
-
-        let drawSize = CGSize(width: 300, height: 100)
-        webView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: drawSize)
-
-        self.onLoad = onLoad
-        webView.navigationDelegate = self
-        webView.loadHTMLString(string, baseURL: nil)
-    }
-}
-extension ImageWebView: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.takeSnapshot(with: .init()) { image, error in
-            self.onLoad?(image!)
         }
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let image: UIImage
+    let result: Result<Stretch, Error>
 }
 struct AllLinesWidget: Widget {
     public var body: some WidgetConfiguration {
@@ -80,9 +53,8 @@ struct AllLinesWidget: Widget {
                             intent: LockSelectionIntent.self,
                             provider: LockProvider()) { entry in
             GeometryReader { metrics in
-                Image(uiImage: entry.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                ContentView(result: .init(get: { entry.result },
+                                          set: { _ in }))
                     .frame(width: metrics.size.width, height: metrics.size.height)
             }
         }
@@ -92,7 +64,7 @@ struct AllLinesWidget: Widget {
     }
 }
 extension LockSelectionIntent {
-    var location: Location {
+    var location: Lock {
         switch self.lock {
         case .buscot:
             return .buscot

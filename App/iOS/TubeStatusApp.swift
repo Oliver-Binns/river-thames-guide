@@ -10,11 +10,19 @@ import SwiftUI
 
 @main
 struct TubeStatusApp: App {
-    @ObservedObject private var viewModel = StatusViewModel(client: .init())
+    @State private var result: Result<Stretch, Error>?
 
     var body: some Scene {
         WindowGroup {
-            ContentView(htmlData: viewModel.htmlData)
+            VStack {
+                ContentView(result: $result)
+            }.onAppear {
+                StatusService.getStatus(client: .init(), for: .marsh) { result in
+                    DispatchQueue.main.async {
+                        self.result = result
+                    }
+                }
+            }
         }
     }
 }

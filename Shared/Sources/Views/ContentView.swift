@@ -1,31 +1,35 @@
 //
 //  ContentView.swift
-//  Shared
+//  iOS
 //
-//  Created by Oliver Binns on 25/06/2020.
+//  Created by Laptop 3 on 03/02/2021.
 //
 import SwiftUI
-import WebKit
 
 public struct ContentView: View {
-    private let htmlData: Data
-    @ObservedObject var model: ImageWebView
+    @Binding var result: Result<Stretch, Error>?
 
-    public init(htmlData: Data) {
-        self.htmlData = htmlData
-        self.model = ImageWebView(data: htmlData)!
+    public init(result: Binding<Result<Stretch, Error>?>) {
+        self._result = result
     }
 
     public var body: some View {
-        GeometryReader { metrics in
-            Image(uiImage: model.image ?? UIImage(systemName: "nosign")!)
-                .frame(width: metrics.size.width,
-                       height: metrics.size.height)
+        VStack {
+            switch result {
+            case .success(let stretch):
+                StretchView(stretch: stretch)
+            case .failure(let error):
+                Text(error.localizedDescription)
+            default:
+                Text("Loading...")
+            }
         }
     }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(htmlData: .init())
+        StretchView(stretch: .init(name: "Test",
+                                   condition: "Test 2",
+                                   lastUpdated: .init()))
     }
 }
