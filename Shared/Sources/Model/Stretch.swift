@@ -16,6 +16,10 @@ public struct Stretch {
         switch colourString {
         case "red":
             return .red
+        case "yellow":
+            return .yellow
+        case "green":
+            return .green
         default:
             return .primary
         }

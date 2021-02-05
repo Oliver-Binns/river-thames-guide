@@ -17,6 +17,7 @@ public struct StatusService {
     }
 
     public static func getStatuses(for location: Lock) -> AnyPublisher<[Stretch], Error> {
+        
         Publishers.MergeMany(
             [location.previous, location, location.next]
                 .compactMap { $0 }

@@ -11,7 +11,7 @@ public struct StretchView: View {
 
     private var formatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm dd MMM"
+        dateFormatter.dateFormat = "dd MMM"
         return dateFormatter
     }
 
@@ -22,14 +22,16 @@ public struct StretchView: View {
     public var body: some View {
         VStack {
             Text(stretch.name)
-                .font(.subheadline)
-            HStack {
-                Text(stretch.condition)
-                    .foregroundColor(stretch.colour)
-                    .font(.caption2)
-                Text("Last Updated: \(formatter.string(from: stretch.lastUpdated))")
-                    .font(.caption2)
-            }
+                .font(.system(.footnote, design: .rounded))
+                .fontWeight(.semibold)
+            Text(stretch.condition)
+                .font(.footnote)
+                .foregroundColor(.black)
+                .padding(.horizontal, 6)
+                .background(stretch.colour)
+                .cornerRadius(4)
+            Text("Last Update: \(formatter.string(from: stretch.lastUpdated))")
+                .font(.caption2)
         }
     }
 }

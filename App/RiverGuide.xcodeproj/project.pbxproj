@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074AF46525CD3FB200A13CC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074AF46425CD3FB200A13CC6 /* HomeView.swift */; };
 		0750F63924CB5382004B9DED /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0750F63824CB5382004B9DED /* Launch.storyboard */; };
 		076BC47024B461FB0006AADB /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076BC46F24B461FB0006AADB /* Shared.framework */; };
 		076BC47124B461FB0006AADB /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076BC46F24B461FB0006AADB /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		074AF46425CD3FB200A13CC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0750F63824CB5382004B9DED /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		076BC46F24B461FB0006AADB /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		076BC47224B462030006AADB /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				7C18739224A3A45E009CCECC /* TubeStatusApp.swift */,
+				074AF46425CD3FB200A13CC6 /* HomeView.swift */,
 				7C18739624A3A462009CCECC /* Assets.xcassets */,
 				7C18739B24A3A462009CCECC /* Info.plist */,
 				0750F63824CB5382004B9DED /* Launch.storyboard */,
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074AF46525CD3FB200A13CC6 /* HomeView.swift in Sources */,
 				7C09CAB624A524D4000D9431 /* LockSelection.intentdefinition in Sources */,
 				7C18739324A3A45E009CCECC /* TubeStatusApp.swift in Sources */,
 			);

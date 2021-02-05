@@ -14,7 +14,7 @@ public struct ContentView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             switch result {
             case .success(let stretches):
                 ForEach(stretches) {
