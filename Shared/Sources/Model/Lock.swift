@@ -4,7 +4,7 @@
 //
 //  Created by Laptop 3 on 24/12/2020.
 //
-public enum Lock: String, CaseIterable {
+public enum Lock: String, CaseIterable, Equatable {
     case stJohns = "st"
     case buscot
     case grafton
@@ -71,5 +71,14 @@ extension Lock {
             return nil
         }
         return Lock.allCases[nextIndex]
+    }
+}
+extension Lock: Comparable {
+    public static func < (lhs: Lock, rhs: Lock) -> Bool {
+        guard let lhsNext = lhs.next else {
+            return false
+        }
+        return lhsNext == rhs ||
+            lhsNext < rhs
     }
 }

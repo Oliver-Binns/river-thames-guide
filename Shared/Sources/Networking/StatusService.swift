@@ -24,6 +24,7 @@ public struct StatusService {
                 .map { getStatus(for: $0) }
         )
         .collect()
+        .map { $0.sorted() }
         .eraseToAnyPublisher()
     }
 

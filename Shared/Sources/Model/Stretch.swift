@@ -25,6 +25,14 @@ public struct Stretch {
         }
     }
 
+    var location: Lock? {
+        name
+            .split(whereSeparator: { $0.isWhitespace })
+            .map(String.init)
+            .compactMap(Lock.init)
+            .first
+    }
+
     public let lastUpdated: Date
 
     public init(name: String, condition: String, lastUpdated: Date) {
@@ -45,5 +53,14 @@ extension Stretch: Decodable {
 extension Stretch: Identifiable {
     public var id: String {
         name
+    }
+}
+extension Stretch: Comparable {
+    public static func < (lhs: Stretch, rhs: Stretch) -> Bool {
+        guard let lhsLocation = lhs.location,
+              let rhsLocation = rhs.location else {
+            return false
+        }
+        return lhsLocation < rhsLocation
     }
 }
