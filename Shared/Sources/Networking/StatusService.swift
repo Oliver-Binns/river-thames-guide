@@ -17,15 +17,13 @@ public struct StatusService {
     }
 
     public static func getStatuses(for location: Lock) -> AnyPublisher<[Stretch], Error> {
-        
-        Publishers.MergeMany(
-            [location.previous, location, location.next]
-                .compactMap { $0 }
-                .map { getStatus(for: $0) }
-        )
-        .collect()
-        .map { $0.sorted() }
-        .eraseToAnyPublisher()
+        [location.previous, location, location.next]
+            .compactMap { $0 }
+            .publisher
+            .flatMap(getStatus)
+            .collect()
+            .sort()
+            .eraseToAnyPublisher()
     }
 
     public static func getStatus(for location: Lock) -> AnyPublisher<Stretch, Error> {
@@ -38,5 +36,10 @@ public struct StatusService {
             .map(\.data)
             .decode(type: Stretch.self, decoder: jsonDecoder)
             .eraseToAnyPublisher()
+    }
+}
+extension Publisher where Output: Sequence, Output.Element: Comparable {
+    func sort() -> Publishers.Map<Self, [Output.Element]> {
+        map { $0.sorted() }
     }
 }

@@ -27,8 +27,9 @@ public struct Stretch {
 
     var location: Lock? {
         name
-            .split(whereSeparator: { $0.isWhitespace })
+            .split(whereSeparator: { !$0.isLetter })
             .map(String.init)
+            .map { $0.lowercased() }
             .compactMap(Lock.init)
             .first
     }
