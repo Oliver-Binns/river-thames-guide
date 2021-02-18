@@ -18,6 +18,6 @@ extension URLRequest {
         guard let url = URL(string: Self.baseURL + endpoint.joined(separator: "/")) else {
             preconditionFailure("Expected a valid URL")
         }
-        self.init(url: url)
+        self.init(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
     }
 }
